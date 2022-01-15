@@ -28,3 +28,10 @@ jobs:
           timestamp=$(date -u)
           git commit -m "Latest data: ${timestamp}" || exit 0
           git push
+      - name: Deploy Datasette using Vercel
+        env:
+          NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
+        run: |-
+          datasette publish vercel air-sensors.db \
+            --token $NOW_TOKEN \
+            --project lewisham-air-sensors-history
