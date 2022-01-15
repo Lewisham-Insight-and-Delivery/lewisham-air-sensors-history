@@ -32,6 +32,6 @@ jobs:
         env:
           NOW_TOKEN: ${{ secrets.NOW_TOKEN }}
         run: |-
-          datasette publish vercel air-sensors.db \
+          datasette publish vercel air-sensors.db --install=datasette-vega \
             --token $NOW_TOKEN \
             --project lewisham-air-sensors-history
